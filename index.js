@@ -28,13 +28,6 @@ const passwordGenerator = (function () {
 
     return {
         generatePassword ({useUpper = true, useLower = true, useDigits = false, useSpecial = false, length = 10} = {}) {
-            if (digitsCheckbox.checked) {
-                useDigits = true
-            }
-            if (specSymbolsCheckbox.checked) {
-                useSpecial = true;
-            }
-
             let arr = [];
             if (useUpper) {
                 arr = arr.concat(upperCaseLetters)
@@ -59,4 +52,13 @@ const passwordGenerator = (function () {
     }
 })();
 
+generateButton.addEventListener('click', () => {
+    passwordGenerator.generatePassword({
+        useUpper: upperCaseCheckbox.checked,
+        useLower: lowerCaseCheckbox.checked,
+        useDigits: digitsCheckbox.checked,
+        useSpecial:specSymbolsCheckbox.checked ,
+        length: passwordLengthRange.value
+    })
+});
 

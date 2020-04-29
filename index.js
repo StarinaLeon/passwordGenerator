@@ -60,6 +60,5 @@ generateButton.addEventListener('click', (event) => {
         useSpecial:specSymbolsCheckbox.checked,
         length: passwordLengthRange.value
     });
-
 });
 

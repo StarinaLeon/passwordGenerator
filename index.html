@@ -10,23 +10,28 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-<div class="container">
-    <input type="text" name="password" id="passwordInput" placeholder="Your generated password">
-    <button class="pure-button" type="button" id="copyButton">Copy</button>
-    <div class="checkbox">
-        <input type="checkbox" name="upperCase" id="upperCase"><label for="upperCase">Use upper case letters (A-Z)</label>
-        <input type="checkbox" name="lowerCase" id="lowerCase"><label for="lowerCase">Use lower case letters (a-z</label> ) <br>
-        <input type="checkbox" name="digits" id="digits"><label for="digits">Use digits (0-9)</label>
-        <input type="checkbox" name="symbol" id="specSymbols"><label for="specSymbols">Use special symbols (!,@,#, $, %, ^,_)</label>
+
+    <div class="flex-container">
+        <form class="pure-form" >
+            <input type="text" class="pure-input-2-3 pure-input-rounded" name="password" id="passwordInput" placeholder="Your generated password">
+            <button class="pure-button" type="button" id="copyButton">Copy</button>
+        </form>
+
+        <div class="pure-g">
+            <div class="pure-u-1-2"> <input  type="checkbox" id="upperCase"><label for="upperCase">Use upper case letters (A-Z)</label> </div>
+            <div class="pure-u-1-2"> <input  type="checkbox" id="lowerCase"><label for="lowerCase">Use lower case letters (a-z)</label> </div>
+            <div class="pure-u-1-2"> <input  type="checkbox" id="digits"><label for="digits">Use digits (0-9)</label> </div>
+            <div class="pure-u-1-2"> <input  type="checkbox" id="specSymbols"><label for="specSymbols">Use special symbols (!,@,#, $, %, ^,_)</label> </div>
+        </div>
+
+        <div class="range-wrap">
+            <div class="range-value" id="rangeV"></div>
+            <input type="range" id="passwordLength" min="5" max="15" value="15" step="1">
+            <label  for="passwordLength">Password length</label>
+        </div>
+        <button id="generatePassword" type="button" class="pure-button">Generate</button>
     </div>
 
-    <div class="range">
-        <input type="range" id="passwordLength" name="passwordLength"
-               min="5" max="15">
-        <label for="passwordLength">Password length</label>
-    </div>
-    <button id="generatePassword" type="button" class="pure-button">Generate</button>
-</div>
 <script src="index.js"></script>
 </body>
 </html>

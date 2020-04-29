@@ -52,13 +52,14 @@ const passwordGenerator = (function () {
     }
 })();
 
-generateButton.addEventListener('click', () => {
-    passwordGenerator.generatePassword({
+generateButton.addEventListener('click', (event) => {
+    passwordInput.value = passwordGenerator.generatePassword({
         useUpper: upperCaseCheckbox.checked,
         useLower: lowerCaseCheckbox.checked,
         useDigits: digitsCheckbox.checked,
-        useSpecial:specSymbolsCheckbox.checked ,
+        useSpecial:specSymbolsCheckbox.checked,
         length: passwordLengthRange.value
-    })
+    });
+
 });
 

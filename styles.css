@@ -1,14 +1,22 @@
-html {
+html, body {
     font-family: 'Open Sans', sans-serif;
+    height: 100%;
 }
-
 
 .flex-container {
     display: flex;
     align-items: center;
     flex-direction: column;
     justify-content: center;
+    height: 100%;
 }
+
+.flex-container form {
+   margin-right: auto;
+   margin-left: auto;
+   text-align: center;
+}
+
 form {
     min-width: 600px;
 }
@@ -30,7 +38,6 @@ input[type=range]::-webkit-slider-runnable-track {
     width: 100%;
     height: 4px;
     cursor: pointer;
-    animate: 0.2s;
     background: #03a9f4;
     border-radius: 25px;
 }
@@ -46,7 +53,16 @@ input[type=range]::-webkit-slider-thumb {
 }
 
 .range-wrap{
-    width: 500px;
+    margin: 10px;
+    width: 250px;
     position: relative;
+    text-align: center;
 }
 
+.button-success {
+    color: rgb(28, 184, 65);
+}
+
+.range {
+    display: inline-flex;
+}

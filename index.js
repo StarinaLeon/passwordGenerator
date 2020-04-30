@@ -1,13 +1,31 @@
 const passwordInput = document.querySelector('#passwordInput');
 const copyButton = document.querySelector('#copyButton');
-const generateButton = document.querySelector(('#generatePassword'));
+const generateButton = document.querySelector('#generatePassword');
 
-const upperCaseCheckbox = document.querySelector(('#upperCase'));
-const lowerCaseCheckbox = document.querySelector(('#lowerCase'));
+const checkboxes = document.querySelectorAll('input[type=checkbox]');
+const upperCaseCheckbox = document.querySelector('#upperCase');
+const lowerCaseCheckbox = document.querySelector('#lowerCase');
 const digitsCheckbox = document.querySelector(('#digits'));
-const specSymbolsCheckbox = document.querySelector(('#specSymbols'));
+const specSymbolsCheckbox = document.querySelector('#specSymbols');
+
+const rangeValue = document.querySelector('#rangeV');
 
 const passwordLengthRange = document.querySelector('#passwordLength');
+const minValue = document.querySelector('#minValue').innerHTML = passwordLengthRange.min;
+const maxValue = document.querySelector('#maxValue').innerHTML = passwordLengthRange.max;
+
+function check() {
+    generateButton.disabled = true;
+    checkboxes.forEach(checkbox => {if (checkbox.checked) generateButton.disabled = false});
+}
+
+rangeValue.innerHTML = 'Password length: ' + passwordLengthRange.value;
+
+passwordLengthRange.addEventListener('change', (e) => {
+    rangeValue.innerHTML = 'Password length:' + e.target.value;
+})
+
+checkboxes.forEach(checkbox => checkbox.addEventListener('change', check));
 
 passwordInput.addEventListener('change', (event) => console.log(event.target.value));
 
@@ -15,7 +33,13 @@ copyButton.addEventListener('click', (event) => {
     passwordInput.focus();
     passwordInput.select();
     document.execCommand("copy");
-})
+    copyButton.classList.add("button-success");
+    copyButton.innerHTML = "Copied";
+    setTimeout(() => {
+        copyButton.classList.remove('button-success');
+        copyButton.innerHTML = 'Copy'
+    },2000)
+});
 
 const passwordGenerator = (function () {
 
@@ -23,8 +47,6 @@ const passwordGenerator = (function () {
     const lowerCaseLetters = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z'];
     const upperCaseLetters = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'];
     const symbols = ['~', '!', '@', '#', '$', '%','^', '&', '*', '(', ')', '_', '+', '=', '-', '?', '/', '|'];
-
-
 
     return {
         generatePassword ({useUpper = true, useLower = true, useDigits = false, useSpecial = false, length = 10} = {}) {

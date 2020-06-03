@@ -1,5 +1,10 @@
 html {
     font-family: 'Open Sans', sans-serif;
+	height: 100%;
+}
+
+body {
+	height: 100%;
 }
 
 
@@ -8,6 +13,7 @@ html {
     align-items: center;
     flex-direction: column;
     justify-content: center;
+	height: 100%;
 }
 form {
     min-width: 600px;
